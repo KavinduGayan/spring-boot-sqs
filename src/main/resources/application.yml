@@ -1,0 +1,11 @@
+server:
+  port: 8089   # Application port
+
+cloud:
+  aws:
+    region:
+      static: us-east-1  # Region where you have created the queue. In this example, we have created the queue in 'ap-south-1' region.
+      auto: false
+    credentials:
+      access-key: AKIA332TWQIX4OONOJE3
+      secret-key: Kt3OndN1um7piPx5biKZUNQWXckKGinPhBhV28qt
