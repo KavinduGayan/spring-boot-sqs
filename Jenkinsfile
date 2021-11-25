@@ -1,18 +1,31 @@
 pipeline {
     agent any
+
     stages {
-        stage ('Initialize') {
+        stage ('Compile Stage') {
+
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+                withMaven(maven : 'maven') {
+                    sh 'mvn clean compile'
+                }
             }
         }
 
-        stage ('Build') {
+        stage ('Testing Stage') {
+
             steps {
-                echo 'This is a minimal pipeline.'
+                withMaven(maven : 'maven') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
