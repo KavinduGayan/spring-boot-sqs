@@ -15,8 +15,11 @@ pipeline {
         }
 
         stage ('Build') {
-                    withMaven {
+                    steps {
+                    withMaven{
                     sh "mvn -version"
+                    }
+
                     }
                     post {
                         success {
