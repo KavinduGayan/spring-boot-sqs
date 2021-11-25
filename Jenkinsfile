@@ -16,7 +16,11 @@ pipeline {
 
         stage ('Build') {
                     steps {
-                        sh 'mvn -Dmaven.test.failure.ignore=true install'
+                    sh "mvn -version"
+                    /* sh '''
+                    export PATH=$PATH:M2_HOME/bin
+                    mvn -Dmaven.test.failure.ignore=true install
+                        ''' */
                     }
                     post {
                         success {
