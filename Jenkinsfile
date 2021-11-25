@@ -1,13 +1,22 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'maven'
+        jdk 'maven'
+    }
     stages {
-        stage ('Compile Stage') {
-
+        stage ('Initialize') {
             steps {
-                maven : 'maven' {
-                    sh 'mvn clean compile'
-                }
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
             }
         }
     }
