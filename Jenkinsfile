@@ -15,7 +15,7 @@ pipeline {
         }
 
         stage ('Build') {
-                    steps {
+                    withMaven {
                     sh "mvn -version"
                     }
                     post {
